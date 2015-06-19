@@ -2,18 +2,20 @@ import pygame, sys
 
 pygame.init()
 pygame.mixer.init()
+
+red = (255, 0, 0)
+white = (255,255,255)
+lol = (155,155,65)
+
+pygame.display.set_caption('Hello Nitin')
 window = pygame.display.set_mode((500, 400))
 
-
 paintName=pygame.image.load("plane.png")
-myMusic = pygame.mixer.Sound("music.ogg")
-# name = pygame.font.SysFont("Verdana", 40)
-# paintName = name.render("Nitin", 1, (255, 0, 0), (255, 255, 255))
 
 objectSize = paintName.get_size()
 frameSpeed = pygame.time.Clock()
-x = 300
-y = 200
+x = 0
+y = 100
 
 while True:
     frameSpeed.tick(50)
@@ -37,22 +39,18 @@ while True:
 
     if x+objectSize[0] >= 500:
         x = 500 - objectSize[0]
-        myMusic.stop()
-        myMusic.play()
 
     if y+objectSize[1] >= 400:
         y = 400 - objectSize[1]
-        myMusic.stop()
-        myMusic.play()
 
     if x<=0:
         x = 0
-        myMusic.stop()
-        myMusic.play()
     if y<=0:
         y = 0
-        myMusic.stop()
-        myMusic.play()
+
+    pygame.draw.rect(window, red, [400,300,15,200])
+    pygame.draw.rect(window, lol, [350,200,15,-200])
+    pygame.draw.rect(window, white, [180,200,15,200])
 
 
     pygame.display.update()
